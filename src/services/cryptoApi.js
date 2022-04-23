@@ -5,7 +5,7 @@ const cryptoApiHeaders = {
   "x-rapidapi-key": process.env.REACT_APP_RAPIDAPI_KEY,
 };
 
-const baseUrl = "https://coinranking1.p.rapidapi.com";
+const baseUrl = "https://coinpaprika1.p.rapidapi.com/";
 
 const createRequest = (url) => ({ url, headers: cryptoApiHeaders });
 
@@ -15,11 +15,15 @@ export const cryptoApi = createApi({
   endpoints: (builder) => ({
     // ** The `getCryptos` endpoint is a "query" operation that returns data
     getCryptos: builder.query({
+      query: () => createRequest("/global"),
+    }),
+    getExchanges: builder.query({
       query: () => createRequest("/exchanges"),
     }),
   }),
 });
 
+export const { useGetCryptosQuery, useGetExchangesQuery } = cryptoApi;
 // const options = {
 //     method: 'GET',
 //     url: 'https://coinranking1.p.rapidapi.com/coin/Qwsogvtv82FCd',
