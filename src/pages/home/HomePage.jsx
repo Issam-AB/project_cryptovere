@@ -9,7 +9,7 @@ import News from "../news/News.jsx";
 const { Title } = Typography;
 
 const HomePage = () => {
-  const { data, isFetching } = useGetCryptosQuery();
+  const { data, isFetching } = useGetCryptosQuery(10);
   console.info("data", data);
 
   if (isFetching) return "loading ...";
